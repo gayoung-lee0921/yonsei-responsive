@@ -40,11 +40,20 @@ new Swiper("#main-visual .notice-mask", {
 });
 
 new Swiper("#research .mask", {
-  slidesPerView: 3,
+  slidesPerView: 1,
   spaceBetween: 30,
   navigation: {
     prevEl: "#research .btn-prev",
     nextEl: "#research .btn-next",
+  },
+  breakpoints: {
+    // when window width is >= 640px
+    640: {
+      slidesPerView: 2,
+    },
+    1280: {
+      slidesPerView: "auto",
+    },
   },
 });
 new Swiper("#community .mask", {

@@ -305,6 +305,13 @@ video::-webkit-media-controls-download-button {
   display: none;
 }
 
+@media all and (max-width: 1840px) {
+  #footer .container {
+    padding: 0 50px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+}
 @media all and (min-width: 1280px) {
   #header #gnb .list > li:hover .depth01 {
     background-color: #0467b3;
@@ -346,7 +353,7 @@ video::-webkit-media-controls-download-button {
     width: 100%;
     height: 100vh;
     background-color: #fff;
-    left: 0;
+    left: 100%;
     color: #111;
     top: 120px;
     left: 100%;
@@ -376,7 +383,7 @@ video::-webkit-media-controls-download-button {
   }
   #header #gnb .list .depth02 li a {
     text-align: left;
-    padding: 20px 0 20px 30px;
+    padding: 20px 0 20px 40px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.5);
     line-height: 1;
     display: flex;
@@ -390,6 +397,22 @@ video::-webkit-media-controls-download-button {
     background-color: #fff;
     border-radius: 100px;
     margin-right: 10px;
+  }
+}
+@media all and (max-width: 980px) {
+  #footer .container {
+    padding: 0 20px;
+  }
+  #footer .addr-box .family-site {
+    margin-top: 50px;
+    position: relative;
+    bottom: 0;
+  }
+  #footer .util-box {
+    flex-direction: column;
+  }
+  #footer .util-box .copyright {
+    margin-top: 30px;
   }
 }
 @media all and (max-width: 640px) {
@@ -427,5 +450,22 @@ video::-webkit-media-controls-download-button {
   }
   #header .util .all-menu {
     margin-left: 20px;
+  }
+}
+@media all and (max-width: 480px) {
+  #footer {
+    padding: 30px 0;
+  }
+  #footer .addr-box {
+    line-height: 1.5;
+    font-size: 14px;
+  }
+  #footer .addr-box .tel {
+    display: flex;
+    flex-direction: column;
+  }
+  #footer .addr-box .tel .fax {
+    margin-top: 10px;
+    margin-left: 0;
   }
 }

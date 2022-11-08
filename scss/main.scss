@@ -180,23 +180,23 @@
       margin-bottom: 30px;
       line-height: 1.5;
     }
-    .more {
-      width: 200px;
-      height: 60px;
-      display: flex;
-      box-sizing: border-box;
-      background-color: $main-color;
-      color: #fff;
-      justify-content: space-between;
-      align-items: center;
-      padding: 0 30px;
-      font-weight: 700;
-      font-size: 14px;
-      &:after {
-        content: "\f061";
-        font-family: "FontAwesome";
-        display: block;
-      }
+  }
+  .more {
+    width: 200px;
+    height: 60px;
+    display: flex;
+    box-sizing: border-box;
+    background-color: $main-color;
+    color: #fff;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 30px;
+    font-weight: 700;
+    font-size: 14px;
+    &:after {
+      content: "\f061";
+      font-family: "FontAwesome";
+      display: block;
     }
   }
 }
@@ -254,6 +254,7 @@
       margin-left: 400px;
       overflow: hidden;
       li {
+        width: 450px;
         .img-box {
           height: 300px;
           @include flex;
@@ -284,6 +285,11 @@
       }
     }
   }
+  .mobile-only {
+    display: none;
+  }
+  // .more {
+  // }
 }
 
 #fund {
@@ -337,6 +343,7 @@
           height: 100px;
           background-color: $main-color;
           color: #fff;
+          flex-shrink: 0;
           flex-direction: column;
           @include flex;
           border-radius: 10px;
@@ -600,6 +607,7 @@
     }
   }
 }
+
 @media all and (max-width: 1460px) {
   .container {
     width: 100%;
@@ -607,10 +615,19 @@
     box-sizing: border-box;
   }
 }
+
 @media all and (max-width: 1280px) {
+  .section {
+    padding: clamp(50px, 15.625vw, 200px) 0;
+  }
   #main-visual {
+    position: relative;
     .mask {
       width: 100%;
+      right: auto;
+      left: 20px;
+      // 66vw = 850 / 1280
+      height: clamp(450px, 66vw, 850px);
     }
     > .contents {
       bottom: 0;
@@ -619,12 +636,140 @@
       }
     }
   }
-}
-@media all and (max-width: 980px) {
-  #main-visual {
-    .container {
-      padding: 0 20px;
+  #research {
+    position: relative;
+    &:before {
+      //  800 / 1280
+      width: 62.5vw;
     }
+    .title-box {
+      .more {
+        display: none;
+      }
+    }
+    .mobile-only {
+      display: flex;
+      position: absolute;
+      bottom: 0px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    .container {
+      position: static;
+      .title-box {
+        position: static;
+        width: 100%;
+        text-align: center;
+        .btns {
+          width: 100%;
+          justify-content: center;
+          margin-left: 0;
+        }
+      }
+    }
+    .banner {
+      width: 100%;
+      .mask {
+        margin-left: 0;
+      }
+    }
+  }
+
+  #about {
+    .container {
+      flex-direction: column;
+    }
+  }
+  #department {
+    .contents-box {
+      flex-direction: column;
+      .contents {
+        width: 100%;
+        margin-top: 50px;
+        &:nth-child(1) {
+          margin-top: 0;
+        }
+      }
+    }
+  }
+  #community {
+    .container {
+      flex-direction: column;
+    }
+    .mask {
+      width: auto;
+      margin-top: 50px;
+      li {
+        position: relative;
+        // &:before {
+        //   content: "";
+        //   display: block;
+        //   padding-top: 50%;
+        // }
+        // img {
+        //   position: absolute;
+        //   left: 0;
+        //   top: 0;
+        //   width: 100%;
+        //   height: 100%;
+        // }
+        width: 100%;
+        aspect-ratio: 2;
+        border-radius: 20px;
+        overflow: hidden;
+        img {
+          height: 100%;
+          width: 100%;
+          object-fit: cover;
+        }
+      }
+    }
+
+    .banner {
+      display: flex;
+      flex-direction: column-reverse;
+      margin-top: 50px;
+      .link {
+        position: static;
+        ul {
+          display: flex;
+          flex-wrap: wrap;
+          li {
+            // 좌우 margin이 10px 들어가서 width를 40%로 만듦
+            width: 40%;
+            margin: 5px;
+            flex-grow: 1;
+            a {
+              // width: auto 의 의미는 width: calc(100% - 10px)와 같음
+              width: auto;
+              font-size: 16px;
+              padding-left: 20px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media all and (max-width: 980px) {
+  .section {
+    .title-box {
+      h2 {
+        font-size: clamp(22px, 3.3vw, 32px);
+        br {
+          content: "";
+        }
+      }
+      p {
+        font-size: 14px;
+      }
+    }
+  }
+  .container {
+    padding: 0 20px;
+  }
+  #main-visual {
     > .contents {
       .title {
         // 68 / 980 = 약 6.99..이라 7vw 로 설정
@@ -647,7 +792,7 @@
             right: 80px;
           }
           .txt {
-            width: calc(100% - 210px);
+            width: calc(100% - 250px);
             h3 {
               @include ellipsis;
             }
@@ -659,16 +804,98 @@
       }
     }
   }
+  #fund {
+    .fund-list {
+      li {
+        padding: 15px;
+        .main {
+          flex-direction: column;
+          .date {
+            margin-top: 10px;
+          }
+        }
+        .contents {
+          .img-box {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+  #about {
+    .container {
+      .title-box {
+        br {
+          content: "";
+        }
+        h2 {
+          font-size: clamp(22px, 5.8vw, 56px);
+        }
+        p {
+          font-size: clamp(14px, 1.85vw, 18px);
+        }
+      }
+      .organization {
+        width: 100%;
+        ul {
+          margin: 0 -5px;
+          width: auto;
+        }
+      }
+    }
+  }
 }
 @media all and (max-width: 640px) {
   #main-visual {
-    // .container {
-    // }
     .contents {
+      .news {
+        h3 {
+          font-size: 20px;
+          @include ellipsis;
+          margin-bottom: 15px;
+          padding-bottom: 15px;
+        }
+        .desc {
+          font-size: 14px;
+          @include ellipsis;
+        }
+      }
       .notice {
         margin-left: -20px;
         width: calc(100% + 40px);
+        .title-box {
+          display: none;
+        }
       }
+    }
+  }
+  #about {
+    .container {
+      .organization {
+        ul {
+          li {
+            width: 40%;
+            flex-grow: 1;
+          }
+        }
+      }
+    }
+  }
+  #department {
+    .contents-box {
+      .contents {
+        ul {
+          li {
+            width: 40%;
+            flex-grow: 1;
+          }
+        }
+      }
+    }
+  }
+  #community {
+    .banner .link ul li {
+      width: 90%;
     }
   }
 }
