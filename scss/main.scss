@@ -110,6 +110,7 @@
         }
         .date {
           flex-direction: column;
+          flex-shrink: 0;
           width: 80px;
           height: 80px;
           overflow: hidden;
@@ -127,8 +128,12 @@
         }
         .txt {
           h3 {
+            width: 100%;
             margin-bottom: 10px;
             font-size: $h3 - 2px;
+          }
+          p {
+            width: 100%;
           }
         }
         .btns {
@@ -595,23 +600,75 @@
     }
   }
 }
-/*
-@media all and (max-width: 1280px) {
-  
+@media all and (max-width: 1460px) {
+  .container {
+    width: 100%;
+    padding: 0 50px;
+    box-sizing: border-box;
+  }
 }
-
-@media all and (max-width: 640px) {
-  #header {
-    #logo {
-      display: none;
+@media all and (max-width: 1280px) {
+  #main-visual {
+    .mask {
+      width: 100%;
     }
-    #gnb {
-      .list {
+    > .contents {
+      bottom: 0;
+      .news-and-notice {
         flex-direction: column;
       }
     }
   }
 }
-*/
-#research {
+@media all and (max-width: 980px) {
+  #main-visual {
+    .container {
+      padding: 0 20px;
+    }
+    > .contents {
+      .title {
+        // 68 / 980 = 약 6.99..이라 7vw 로 설정
+        font-size: clamp(24px, 7vw, 68px);
+      }
+      .news {
+        width: 100%;
+      }
+      .notice {
+        width: 100%;
+        margin-top: 50px;
+        .contents {
+          .date {
+            margin-right: 20px;
+          }
+          .btns {
+            right: 10px;
+          }
+          .fraction-pagination {
+            right: 80px;
+          }
+          .txt {
+            width: calc(100% - 210px);
+            h3 {
+              @include ellipsis;
+            }
+            p {
+              @include ellipsis;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+@media all and (max-width: 640px) {
+  #main-visual {
+    // .container {
+    // }
+    .contents {
+      .notice {
+        margin-left: -20px;
+        width: calc(100% + 40px);
+      }
+    }
+  }
 }

@@ -97,22 +97,6 @@ button {
       display: flex;
       > li {
         position: relative;
-        &:hover {
-          .depth01 {
-            background-color: $main-color;
-            color: #fff;
-            &:after {
-              transform: scaleX(1);
-            }
-            &:before {
-              opacity: 1;
-            }
-          }
-          .depth02 {
-            opacity: 1;
-            pointer-events: auto;
-          }
-        }
       }
       .depth01 {
         font-size: $h4;
@@ -320,3 +304,156 @@ video::-webkit-media-controls-fullscreen-button {
 video::-webkit-media-controls-download-button {
   display: none;
 }
+@media all and (min-width: 1280px) {
+  #header {
+    #gnb {
+      .list {
+        > li {
+          &:hover {
+            .depth01 {
+              background-color: $main-color;
+              color: #fff;
+              &:after {
+                transform: scaleX(1);
+              }
+              &:before {
+                opacity: 1;
+              }
+            }
+            .depth02 {
+              opacity: 1;
+              pointer-events: auto;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media all and (max-width: 1860px) {
+  #header {
+    .container {
+      box-sizing: border-box;
+      width: 100%;
+      padding: 0 50px;
+    }
+  }
+}
+
+@media all and (max-width: 1460px) {
+  .container {
+    width: 100%;
+  }
+  #header {
+    .container {
+      padding: 0 20px;
+    }
+    #gnb {
+      .list {
+        .depth01 {
+          font-size: 18px;
+          padding: 0 30px;
+        }
+      }
+    }
+  }
+}
+@media all and (max-width: 1280px) {
+  #header {
+    #gnb {
+      position: fixed;
+      width: 100%;
+      height: 100vh;
+      background-color: #fff;
+      left: 0;
+      color: #111;
+      top: 120px;
+      left: 100%;
+      transition: all 0.25s ease;
+      &.on {
+        left: 0;
+      }
+      .list {
+        display: block;
+        .depth01 {
+          justify-content: start;
+          border-top: 1px solid #ccc;
+        }
+        .depth02 {
+          // position static 하면 원래대로 돌아옴
+          position: static;
+          display: block;
+          opacity: 1;
+          border-radius: 0;
+          padding: 0;
+          display: none;
+          // mobile에선 transition주면 덜커덩 거리니 무조건 없애줌
+          transition: none;
+          li {
+            opacity: 1;
+            a {
+              text-align: left;
+              padding: 20px 0 20px 30px;
+              border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+              line-height: 1;
+              display: flex;
+              align-items: center;
+              &:before {
+                content: "";
+                display: block;
+                width: 3px;
+                height: 3px;
+                background-color: #fff;
+                border-radius: 100px;
+                margin-right: 10px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media all and (max-width: 640px) {
+  #header {
+    height: 60px;
+    .container {
+      padding: 0;
+    }
+    #logo {
+      height: 60px;
+      img {
+        height: 30px;
+      }
+    }
+    #gnb {
+      top: 60px;
+      .list {
+        > li {
+          .depth01 {
+            height: 60px;
+          }
+        }
+      }
+    }
+    .util {
+      height: 60px;
+      margin-right: 10px;
+      .language {
+        padding: 10px;
+        font-size: 12px;
+        button {
+          font-size: 12px;
+          &:before {
+            font-size: 16px;
+          }
+        }
+      }
+      .all-menu {
+        margin-left: 20px;
+      }
+    }
+  }
+} ;

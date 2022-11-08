@@ -108,6 +108,7 @@
 }
 #main-visual > .contents .notice .contents .date {
   flex-direction: column;
+  flex-shrink: 0;
   width: 80px;
   height: 80px;
   overflow: hidden;
@@ -126,8 +127,12 @@
   font-size: 48px;
 }
 #main-visual > .contents .notice .contents .txt h3 {
+  width: 100%;
   margin-bottom: 10px;
   font-size: 22px;
+}
+#main-visual > .contents .notice .contents .txt p {
+  width: 100%;
 }
 #main-visual > .contents .notice .contents .btns {
   position: absolute;
@@ -572,21 +577,64 @@
   border-left: 5px solid transparent;
 }
 
-/*
-@media all and (max-width: 1280px) {
-
-}
-
-@media all and (max-width: 640px) {
-  #header {
-    #logo {
-      display: none;
-    }
-    #gnb {
-      .list {
-        flex-direction: column;
-      }
-    }
+@media all and (max-width: 1460px) {
+  .container {
+    width: 100%;
+    padding: 0 50px;
+    box-sizing: border-box;
   }
 }
-*/
+@media all and (max-width: 1280px) {
+  #main-visual .mask {
+    width: 100%;
+  }
+  #main-visual > .contents {
+    bottom: 0;
+  }
+  #main-visual > .contents .news-and-notice {
+    flex-direction: column;
+  }
+}
+@media all and (max-width: 980px) {
+  #main-visual .container {
+    padding: 0 20px;
+  }
+  #main-visual > .contents .title {
+    font-size: clamp(24px, 7vw, 68px);
+  }
+  #main-visual > .contents .news {
+    width: 100%;
+  }
+  #main-visual > .contents .notice {
+    width: 100%;
+    margin-top: 50px;
+  }
+  #main-visual > .contents .notice .contents .date {
+    margin-right: 20px;
+  }
+  #main-visual > .contents .notice .contents .btns {
+    right: 10px;
+  }
+  #main-visual > .contents .notice .contents .fraction-pagination {
+    right: 80px;
+  }
+  #main-visual > .contents .notice .contents .txt {
+    width: calc(100% - 210px);
+  }
+  #main-visual > .contents .notice .contents .txt h3 {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+  #main-visual > .contents .notice .contents .txt p {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+}
+@media all and (max-width: 640px) {
+  #main-visual .contents .notice {
+    margin-left: -20px;
+    width: calc(100% + 40px);
+  }
+}
