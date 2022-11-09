@@ -93,3 +93,68 @@
   color: #fff;
   border-color: #0467b3;
 }
+
+@media all and (max-width: 980px) {
+  .search-box form {
+    flex-wrap: wrap;
+  }
+  .search-box form select {
+    width: 100%;
+    height: 60px;
+    margin-bottom: 10px;
+  }
+  .search-box form input {
+    flex-grow: 1;
+    margin: 0;
+    margin-right: 10px;
+    width: auto;
+  }
+  .search-box form button {
+    flex-shrink: 0;
+  }
+  .bbs.list .bbs-header {
+    display: none;
+  }
+  .bbs.list .bbs-body {
+    display: flex;
+    flex-direction: column;
+  }
+  .bbs.list .bbs-body li {
+    display: flex;
+    padding: 15px;
+    border-bottom: 1px solid #ccc;
+    flex-wrap: wrap;
+  }
+  .bbs.list .bbs-body li span {
+    display: flex;
+    height: auto;
+    border-bottom: none;
+    text-align: left;
+  }
+  .bbs.list .bbs-body li span.no {
+    display: none;
+  }
+  .bbs.list .bbs-body li span.subject {
+    padding-left: 0;
+    font-size: 18px;
+    font-weight: 500;
+    margin-bottom: 15px;
+    width: 100%;
+  }
+  .bbs.list .bbs-body li span.writer, .bbs.list .bbs-body li span.date {
+    width: auto;
+    margin-right: 20px;
+    font-size: 14px;
+  }
+  .bbs.list .bbs-body li span.writer::before, .bbs.list .bbs-body li span.date::before {
+    content: attr(data-label);
+    display: block;
+    margin-right: 10px;
+    font-weight: 500;
+  }
+  .bbs-pagination a {
+    width: 30px;
+    height: 30px;
+    font-size: 14px;
+  }
+}

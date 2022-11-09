@@ -10,9 +10,21 @@
   //sub-visual에 높이를 생성하기 위해
   display: flex;
   overflow: hidden;
+  position: relative;
+  &:after {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 20%;
+    height: 100%;
+    background-color: #fff;
+    right: 0;
+    top: 0;
+  }
   .container {
     display: flex;
     position: relative;
+    z-index: 1;
   }
   .sub-title {
     font-size: $h1;
@@ -47,6 +59,8 @@
 #lnb {
   background-color: $main-color;
   color: #fff;
+  position: relative;
+  z-index: 2;
   .container {
     display: flex;
     height: 65px;
@@ -58,6 +72,7 @@
       // 텍스트 들여쓰기
       text-indent: -999px;
       border-left: 1px solid rgba(255, 255, 255, 0.25);
+      flex-shrink: 0;
     }
     .lnb-box {
       width: 300px;
@@ -117,9 +132,11 @@
   .container {
     display: flex;
     justify-content: space-between;
+    align-items: flex-start;
     .img-box {
       position: relative;
       border: 1px solid #ccc;
+      flex-shrink: 0;
       img {
         width: 450px;
       }
@@ -257,6 +274,7 @@
     ul {
       display: flex;
       justify-content: center;
+      margin: 0 -5px;
       li {
         flex-basis: 250px;
         height: 80px;
@@ -427,6 +445,235 @@
             &.period {
               border-right: none;
             }
+          }
+        }
+      }
+    }
+  }
+}
+
+/* mobile-first
+@media all and(min-width: 980px){
+
+}*/
+
+@media all and (max-width: 1280px) {
+  #sub-visual {
+    // 넓이에 비례해서 줄어들기 때문에 vw를 사용
+    height: clamp(300px, 43vw, 550px);
+    .sub-title {
+      font-size: clamp(24px, 3.75vw, 48px);
+      margin-top: -50px;
+    }
+  }
+  #lnb {
+    .container {
+      padding: 0;
+    }
+  }
+  .contents-title {
+    padding: clamp(30px, 7.8vw, 100px) 0;
+    font-size: clamp(24px, 3.8vw, 38px);
+  }
+  #sub-contents {
+    padding: clamp(30px, 7.8vw, 100px) 0;
+  }
+
+  .history {
+    .history-list {
+      ul {
+        &:before {
+          left: 0;
+        }
+        li {
+          &:nth-child(odd) {
+            justify-content: start;
+          }
+          &:nth-child(even) {
+            justify-content: start;
+            text-align: left;
+            .year-box {
+              width: 100%;
+              .year {
+                &:before {
+                  left: -55px;
+                }
+              }
+            }
+          }
+          img {
+            left: auto;
+            right: 0;
+          }
+        }
+      }
+    }
+    .chairman-list {
+      flex-direction: column;
+      .list {
+        margin-left: 0;
+        margin-top: 50px;
+      }
+    }
+    .chairman-list02 {
+      flex-direction: column;
+      .list {
+        margin-left: 0;
+        margin-top: 50px;
+      }
+    }
+  }
+}
+
+@media all and (max-width: 980px) {
+  #sub-visual {
+    .container {
+      justify-content: center;
+    }
+    &:after {
+      display: none;
+    }
+    .bg {
+      display: none;
+    }
+  }
+  .contents-visual {
+    flex-direction: column;
+    margin-right: 0;
+    margin-top: clamp(30px, 10vw, 100px);
+    .left-contents {
+      .txt {
+        left: 50%;
+        top: 50%;
+        bottom: auto;
+        text-align: center;
+        transform: translate(-50%, -50%);
+        font-size: clamp(24px, 3.67vw, 36px);
+      }
+    }
+    .right-contents {
+      margin-left: 0;
+    }
+  }
+
+  .greeting {
+    .container {
+      flex-direction: column;
+      .img-box {
+        width: 100%;
+        &:after {
+          display: none;
+        }
+        img {
+          width: 100%;
+        }
+      }
+      .greeting-box {
+        margin-left: 0;
+        width: 100%;
+        margin-top: 50px;
+        h4 {
+          text-align: center;
+          line-height: 1.5;
+          font-size: clamp(24px, 3.6vw, 36px);
+        }
+      }
+    }
+  }
+  .history {
+    .chairman-list,
+    .chairman-list02 {
+      h4 {
+        font-size: clamp(24px, 3.6vw, 36px);
+      }
+    }
+    .chairman-list {
+      .list {
+        ul {
+          li {
+            width: calc(33.33% - 10px);
+            font-size: 14px;
+            .name {
+              font-size: 18px;
+            }
+          }
+        }
+      }
+    }
+    .chairman-list02 {
+      .list {
+        ul {
+          display: block;
+          li {
+            display: block;
+            border-bottom: 1px solid #ccc;
+            padding: 5px 0;
+            span {
+              display: block;
+              text-align: left;
+              padding: 10px 20px;
+              border-bottom: none;
+              &.name {
+                width: 100%;
+                font-size: 18px;
+                font-weight: 700;
+              }
+              &.position {
+                width: 100%;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media all and (max-width: 640px) {
+  #sub-visual {
+    padding-top: 60px;
+  }
+  .history {
+    .scroll-menu {
+      ul {
+        li {
+          height: 60px;
+          font-size: 18px;
+        }
+      }
+    }
+    .history-list {
+      ul li {
+        flex-direction: column;
+        &:nth-child(even) {
+          .year-box .year:before {
+            left: -25px;
+          }
+        }
+        .year-box {
+          width: 100%;
+          padding-left: 20px;
+          .year {
+            font-size: 24px;
+            &:before {
+              left: -25px;
+              right: auto;
+            }
+          }
+        }
+        img {
+          position: static;
+          margin-top: 30px;
+          width: 50%;
+          margin-left: 20px;
+        }
+      }
+    }
+    .chairman-list {
+      .list {
+        ul {
+          li {
+            width: calc(50% - 10px);
           }
         }
       }

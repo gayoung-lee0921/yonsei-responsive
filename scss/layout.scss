@@ -402,6 +402,7 @@ video::-webkit-media-controls-download-button {
           display: none;
           // mobile에선 transition주면 덜커덩 거리니 무조건 없애줌
           transition: none;
+          pointer-events: auto;
           li {
             opacity: 1;
             a {

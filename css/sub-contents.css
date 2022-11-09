@@ -6,10 +6,22 @@
   box-sizing: border-box;
   display: flex;
   overflow: hidden;
+  position: relative;
+}
+#sub-visual:after {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 20%;
+  height: 100%;
+  background-color: #fff;
+  right: 0;
+  top: 0;
 }
 #sub-visual .container {
   display: flex;
   position: relative;
+  z-index: 1;
 }
 #sub-visual .sub-title {
   font-size: 48px;
@@ -46,6 +58,8 @@
 #lnb {
   background-color: #0467b3;
   color: #fff;
+  position: relative;
+  z-index: 2;
 }
 #lnb .container {
   display: flex;
@@ -57,6 +71,7 @@
   overflow: hidden;
   text-indent: -999px;
   border-left: 1px solid rgba(255, 255, 255, 0.25);
+  flex-shrink: 0;
 }
 #lnb .container .lnb-box {
   width: 300px;
@@ -117,10 +132,12 @@
 .greeting .container {
   display: flex;
   justify-content: space-between;
+  align-items: flex-start;
 }
 .greeting .container .img-box {
   position: relative;
   border: 1px solid #ccc;
+  flex-shrink: 0;
 }
 .greeting .container .img-box img {
   width: 450px;
@@ -245,6 +262,7 @@
 .history .scroll-menu ul {
   display: flex;
   justify-content: center;
+  margin: 0 -5px;
 }
 .history .scroll-menu ul li {
   flex-basis: 250px;
@@ -405,4 +423,179 @@
 }
 .history .chairman-list02 .list ul li span.period {
   border-right: none;
+}
+
+/* mobile-first
+@media all and(min-width: 980px){
+
+}*/
+@media all and (max-width: 1280px) {
+  #sub-visual {
+    height: clamp(300px, 43vw, 550px);
+  }
+  #sub-visual .sub-title {
+    font-size: clamp(24px, 3.75vw, 48px);
+    margin-top: -50px;
+  }
+  #lnb .container {
+    padding: 0;
+  }
+  .contents-title {
+    padding: clamp(30px, 7.8vw, 100px) 0;
+    font-size: clamp(24px, 3.8vw, 38px);
+  }
+  #sub-contents {
+    padding: clamp(30px, 7.8vw, 100px) 0;
+  }
+  .history .history-list ul:before {
+    left: 0;
+  }
+  .history .history-list ul li:nth-child(odd) {
+    justify-content: start;
+  }
+  .history .history-list ul li:nth-child(even) {
+    justify-content: start;
+    text-align: left;
+  }
+  .history .history-list ul li:nth-child(even) .year-box {
+    width: 100%;
+  }
+  .history .history-list ul li:nth-child(even) .year-box .year:before {
+    left: -55px;
+  }
+  .history .history-list ul li img {
+    left: auto;
+    right: 0;
+  }
+  .history .chairman-list {
+    flex-direction: column;
+  }
+  .history .chairman-list .list {
+    margin-left: 0;
+    margin-top: 50px;
+  }
+  .history .chairman-list02 {
+    flex-direction: column;
+  }
+  .history .chairman-list02 .list {
+    margin-left: 0;
+    margin-top: 50px;
+  }
+}
+@media all and (max-width: 980px) {
+  #sub-visual .container {
+    justify-content: center;
+  }
+  #sub-visual:after {
+    display: none;
+  }
+  #sub-visual .bg {
+    display: none;
+  }
+  .contents-visual {
+    flex-direction: column;
+    margin-right: 0;
+    margin-top: clamp(30px, 10vw, 100px);
+  }
+  .contents-visual .left-contents .txt {
+    left: 50%;
+    top: 50%;
+    bottom: auto;
+    text-align: center;
+    transform: translate(-50%, -50%);
+    font-size: clamp(24px, 3.67vw, 36px);
+  }
+  .contents-visual .right-contents {
+    margin-left: 0;
+  }
+  .greeting .container {
+    flex-direction: column;
+  }
+  .greeting .container .img-box {
+    width: 100%;
+  }
+  .greeting .container .img-box:after {
+    display: none;
+  }
+  .greeting .container .img-box img {
+    width: 100%;
+  }
+  .greeting .container .greeting-box {
+    margin-left: 0;
+    width: 100%;
+    margin-top: 50px;
+  }
+  .greeting .container .greeting-box h4 {
+    text-align: center;
+    line-height: 1.5;
+    font-size: clamp(24px, 3.6vw, 36px);
+  }
+  .history .chairman-list h4,
+.history .chairman-list02 h4 {
+    font-size: clamp(24px, 3.6vw, 36px);
+  }
+  .history .chairman-list .list ul li {
+    width: calc(33.33% - 10px);
+    font-size: 14px;
+  }
+  .history .chairman-list .list ul li .name {
+    font-size: 18px;
+  }
+  .history .chairman-list02 .list ul {
+    display: block;
+  }
+  .history .chairman-list02 .list ul li {
+    display: block;
+    border-bottom: 1px solid #ccc;
+    padding: 5px 0;
+  }
+  .history .chairman-list02 .list ul li span {
+    display: block;
+    text-align: left;
+    padding: 10px 20px;
+    border-bottom: none;
+  }
+  .history .chairman-list02 .list ul li span.name {
+    width: 100%;
+    font-size: 18px;
+    font-weight: 700;
+  }
+  .history .chairman-list02 .list ul li span.position {
+    width: 100%;
+  }
+}
+@media all and (max-width: 640px) {
+  #sub-visual {
+    padding-top: 60px;
+  }
+  .history .scroll-menu ul li {
+    height: 60px;
+    font-size: 18px;
+  }
+  .history .history-list ul li {
+    flex-direction: column;
+  }
+  .history .history-list ul li:nth-child(even) .year-box .year:before {
+    left: -25px;
+  }
+  .history .history-list ul li .year-box {
+    width: 100%;
+    padding-left: 20px;
+  }
+  .history .history-list ul li .year-box .year {
+    font-size: 24px;
+  }
+  .history .history-list ul li .year-box .year:before {
+    left: -25px;
+    right: auto;
+  }
+  .history .history-list ul li img {
+    position: static;
+    margin-top: 30px;
+    width: 50%;
+    margin-left: 20px;
+  }
+  .history .chairman-list .list ul li {
+    width: calc(50% - 10px);
+  }
 }
